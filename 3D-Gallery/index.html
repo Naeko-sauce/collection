@@ -4,11 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3d画廊</title>
-
+<link rel="stylesheet" href="./css/style.css">
 </head>
+<style>
+    html,body{
+        width: 100px;
+        height: 100px;
+        font-size: 12px;
+        color: #000;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        /* overflow: hidden; 是用来控制元素内容超出其尺寸时的显示方式的属性。当元素的内容超出其指定的宽度或高度时，overflow: hidden; 会隐藏超出部分的内容，使得超出的内容不会显示在元素的外部 */
+        overflow: hidden;
+    }
+    p,img,div{
+        /* 在CSS中，vertical-align: top; 是用来设置元素内容的垂直对齐方式的属性。具体来说，它定义了元素的内容（例如文本或图片）相对于其行框的垂直对齐方式。top 值表示元素的内容将与其行框的顶部对齐。
+这个属性通常用于内联元素（如 <span>、<img> 等）或表格单元格中的内容。对于块级元素，vertical-align 属性通常不会有明显的效果，因为块级元素默认会填充其父容器的整个高度。 */
+        vertical-align: top;
+    }
+    hide{
+        display: none;
+    }
+    #menu{
+        width: 48px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* transform: translate(-50%, -50%); 是一个 CSS 属性值，用于移动元素的位置。这里的 translate 函数接受两个参数，分别代表水平方向
+（X轴）和垂直方向（Y轴）上的移动距离。
+- translate(-50%, -50%) 表示将元素向左移动其自身宽度的50%，向上移动其自身高度的50%。这通常用于将元素居中对齐，特别是在使用 position:
+ absolute; 或 position: fixed; 时，通过将元素的左上角移动到其父元素的中心位置，从而实现元素的居中对齐。
+这种技术的一个常见用途是在创建固定位置的弹出窗口或模态框时，使其在屏幕上居中显示。例如，如果你有一个弹出窗口，你可以使用以下 CSS 来确保它始终在屏幕中心：
+```css */
+        transform: translate(-50%,-50%);
+        border-radius: 0.9em;
+        text-align: center;
+        font-size: 1.2em;
+        background-color: aliceblue;
+        opacity: 1;
+        background: #ffffff;
+    }
+    #menu #img_container img{
+        /* 在CSS中，flex-shrink: 0; 是一个属性值，用于控制Flex布局中的元素如何缩小。flex-shrink属性定义了当Flex容器空间不足时，Flex项目（即容器
+内的元素）应该缩小的比例。
+- flex-shrink: 0; 表示当Flex容器空间不足时，该元素不会缩小。换句话说，即使容器空间不足，该元素也会保持其原始大小，不会被压缩。
+这个属性的默认值是1，意味着元素会根据需要缩小。如果你设置flex-shrink: 0;，那么即使容器空间不足，该元素也不会缩小，这在某些布局场景中很有用，例如确保某些元素不会变
+得太小，以保持用户界面的可读性和美观性。
+ */
+        flex-shrink: 0;
+        width: 100px;
+    }
+    #menu #contnet div{
+        /* 在CSS中，letter-spacing: 0.25em; 这段代码表示字符间距（letter-spacing）的设置。em 是一个相对单位，表示当前元素的字体大小。0.2
+5em 意味着字符间距是当前元素字体大小的0.25倍。这样的设置可以使文本看起来更加紧凑或者更加宽松，具体效果取决于元素的字体大小。 */
+        letter-spacing: 0.25em;
+    }
+    #menu h1{
+        letter-spacing: 0.25em;
+    }
+    #menu p{
+        margin: 0;
+    }
+</style>
 <body>
     <div class="backgroundd_menu">
-        <div id="menu"></div>
+        <div id="menu">
+            <div id="img_container">
+                <img src="./img/starrynight.jpg" alt="">
+            </div>
+            <div id="content">
+                <!-- art gallery -->
+                <h1>艺术画廊</h1>
+                <!-- this is an interactive 3Dgallery -->
+                <div>这是一个3d互动画廊</div>
+                <div>
+                    <!-- Instructions -->
+                    <p>指令</p>
+                    <!-- arrow keys -->
+                    <p>上箭头</p>
+                    <!-- look around with moue -->
+                    <p>用鼠标移动查看</p>
+                </div>
+                <div id="play_button">
+                    <!-- enter the gallery -->
+                    <p> 进入画廊</p>
+                </div>
+            </div>
+        </div>
     </div>
+  <!-- 引入 Three.js 模块 -->
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js';
+  
+    // 在这里编写您的 Three.js 代码
+    console.log(THREE);
+  </script>
+    <script src="./js/main.js"></script>
 </body>
-</html>
