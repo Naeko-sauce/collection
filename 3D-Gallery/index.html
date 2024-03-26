@@ -7,66 +7,391 @@
 <link rel="stylesheet" href="./css/style.css">
 </head>
 <style>
-    html,body{
-        width: 100px;
-        height: 100px;
-        font-size: 12px;
-        color: #000;
-    }
-    body{
-        margin: 0;
-        padding: 0;
-        /* overflow: hidden; 是用来控制元素内容超出其尺寸时的显示方式的属性。当元素的内容超出其指定的宽度或高度时，overflow: hidden; 会隐藏超出部分的内容，使得超出的内容不会显示在元素的外部 */
-        overflow: hidden;
-    }
-    p,img,div{
-        /* 在CSS中，vertical-align: top; 是用来设置元素内容的垂直对齐方式的属性。具体来说，它定义了元素的内容（例如文本或图片）相对于其行框的垂直对齐方式。top 值表示元素的内容将与其行框的顶部对齐。
-这个属性通常用于内联元素（如 <span>、<img> 等）或表格单元格中的内容。对于块级元素，vertical-align 属性通常不会有明显的效果，因为块级元素默认会填充其父容器的整个高度。 */
-        vertical-align: top;
-    }
-    hide{
-        display: none;
-    }
-    #menu{
-        width: 48px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        /* transform: translate(-50%, -50%); 是一个 CSS 属性值，用于移动元素的位置。这里的 translate 函数接受两个参数，分别代表水平方向
-（X轴）和垂直方向（Y轴）上的移动距离。
-- translate(-50%, -50%) 表示将元素向左移动其自身宽度的50%，向上移动其自身高度的50%。这通常用于将元素居中对齐，特别是在使用 position:
- absolute; 或 position: fixed; 时，通过将元素的左上角移动到其父元素的中心位置，从而实现元素的居中对齐。
-这种技术的一个常见用途是在创建固定位置的弹出窗口或模态框时，使其在屏幕上居中显示。例如，如果你有一个弹出窗口，你可以使用以下 CSS 来确保它始终在屏幕中心：
-```css */
-        transform: translate(-50%,-50%);
-        border-radius: 0.9em;
-        text-align: center;
-        font-size: 1.2em;
-        background-color: aliceblue;
-        opacity: 1;
-        background: #ffffff;
-    }
-    #menu #img_container img{
-        /* 在CSS中，flex-shrink: 0; 是一个属性值，用于控制Flex布局中的元素如何缩小。flex-shrink属性定义了当Flex容器空间不足时，Flex项目（即容器
-内的元素）应该缩小的比例。
-- flex-shrink: 0; 表示当Flex容器空间不足时，该元素不会缩小。换句话说，即使容器空间不足，该元素也会保持其原始大小，不会被压缩。
-这个属性的默认值是1，意味着元素会根据需要缩小。如果你设置flex-shrink: 0;，那么即使容器空间不足，该元素也不会缩小，这在某些布局场景中很有用，例如确保某些元素不会变
-得太小，以保持用户界面的可读性和美观性。
- */
-        flex-shrink: 0;
-        width: 100px;
-    }
-    #menu #contnet div{
-        /* 在CSS中，letter-spacing: 0.25em; 这段代码表示字符间距（letter-spacing）的设置。em 是一个相对单位，表示当前元素的字体大小。0.2
-5em 意味着字符间距是当前元素字体大小的0.25倍。这样的设置可以使文本看起来更加紧凑或者更加宽松，具体效果取决于元素的字体大小。 */
-        letter-spacing: 0.25em;
-    }
-    #menu h1{
-        letter-spacing: 0.25em;
-    }
-    #menu p{
-        margin: 0;
-    }
+    /* Add Animate.css to your project */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  color: #28282f;
+  margin: 0em;
+}
+
+body {
+  margin: 0em;
+  padding: 0em;
+  overflow: hidden;
+  font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial,
+    "Lucida Grande", sans-serif;
+  background-color: #121212;
+  cursor: url("http://www.rw-designer.com/cursor-view/97756.png") 16 16, auto;
+}
+
+p,
+img,
+div,
+canvas {
+  vertical-align: top;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: #34495e;
+  background-color: #34495e;
+  color: #fff;
+}
+
+::selection {
+  /* Code for Chrome, Safari and Opera */
+  background: #34495e;
+  background-color: #34495e;
+  color: #fff;
+}
+
+.hide {
+  display: none;
+}
+
+#menu {
+  width: 40em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.2em;
+  border-radius: 0.9em;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+#menu .title {
+  padding: 1em;
+  background-color: rgba(52, 58, 125, 0.8);
+  color: #f2c641;
+  border-radius: 0.9em;
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 0px #f2c641, 4px 4px 0px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 2s ease-in, shadow-pulse 2s infinite;
+}
+
+@keyframes shadow-pulse {
+  0% {
+    text-shadow: 2px 2px 0px #2323be, 4px 4px 0px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    text-shadow: 4px 4px 0px #2323be, 8px 8px 0px rgba(0, 0, 0, 0.4);
+  }
+}
+
+#menu .title:hover {
+  transform: rotateX(0deg); /* reset the transformation on hover */
+}
+
+.title-info {
+  background-color: rgba(35, 37, 88, 0.8);
+  color: #f2c641;
+  padding: 1em;
+  border-radius: 0.9em;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#menu #content_container {
+  padding: 1em;
+  border-bottom-left-radius: 0.9em;
+  border-bottom-right-radius: 0.9em;
+
+  -webkit-box-shadow: 0em 0.25em 0.75em rgba(124, 124, 124, 0.5);
+  -moz-box-shadow: 0em 0.25em 0.75em rgba(124, 124, 124, 0.5);
+  box-shadow: 0em 0.25em 0.75em rgba(124, 124, 124, 0.5);
+}
+
+#menu #img_container {
+  position: relative;
+  height: 14.5em;
+  overflow: hidden;
+  border-top-left-radius: 0.9em;
+  border-top-right-radius: 0.9em;
+}
+
+#menu #img_container img {
+  flex-shrink: 0;
+  width: 105%;
+}
+
+@keyframes fadeInSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#menu {
+  width: 40em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.2em;
+  border-radius: 0.9em;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+#menu .title h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+#menu #content {
+  padding: 1em;
+}
+
+#menu #content p {
+  font-size: 1.1em;
+  line-height: 1.6em;
+  margin: 0.5em 0;
+}
+
+#menu #play_button {
+  display: inline-block;
+  background-color: rgba(52, 58, 125, 0.8);
+  color: #f2c641;
+  border-radius: 0.9em;
+  padding: 0.5em 1.5em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  transition: all 0.4s;
+}
+
+#menu #play_button:hover {
+  background-color: rgba(52, 58, 125);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+#starry_night_bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://th.bing.com/th/id/R.cf8cb0d1a972300c5e60b3ebf20b5779?rik=QLOj5Ukvu%2brJNQ&pid=ImgRaw&r=0");
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  animation: panBg 30s linear infinite;
+  background-attachment: fixed;
+}
+
+#starry_night_bg:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+@keyframes panBg {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+#painting-info {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  font-family: "Arial", sans-serif;
+  color: #fff;
+  width: 300px;
+  height: 150px;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+#painting-info.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+#painting-info h3 {
+  margin: 0 0 10px 0;
+  font-size: 2em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#painting-info p {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+#info-panel {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  background-color: rgba(35, 35, 190, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+#info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+#info-header h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0;
+}
+
+#info-header button {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  color: #2323be;
+}
+
+#info-content {
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+#info-content p {
+  margin: 5px 0;
+}
+
+#info-panel.collapsed #info-content {
+  max-height: 0;
+  overflow: hidden;
+}
+
+#about-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 50px;
+  box-sizing: border-box;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+#about-overlay.show {
+  transform: translateY(0);
+}
+
+#about-overlay h1 {
+  margin-top: 0;
+}
+
+#close-about {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2em;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+#about_button {
+  display: inline-block;
+  background-color: rgba(52, 58, 125, 0.8);
+  color: #f2c641;
+  border-radius: 30px;
+  padding: 0.5em 1.5em;
+  font-weight: bold;
+  margin: 0 auto; /* Centered the button */
+  transition: all 0.4s;
+  border: 2px solid #2323be;
+}
+
+#about_button:hover {
+  background-color: rgba(52, 58, 125);
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+#audio_controls {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 2; /* To make sure it shows up on top of other elements */
+}
+
+#audio_controls button {
+  display: block;
+  background-color: rgba(35, 37, 88, 0.8);
+  color: #f2c641;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#audio_controls button:hover {
+  background-color: rgba(52, 58, 125, 0.8);
+}
 </style>
 <body>
     <div class="backgroundd_menu">
