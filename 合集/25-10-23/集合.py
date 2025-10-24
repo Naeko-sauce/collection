@@ -30,3 +30,6 @@ print(set_a)
 print(set_a.intersection(set_b))
 # 5差集
 print(set_a.difference(set_b))
+aa =  range(1,9,2)
+
+print(list(aa),type(aa))
