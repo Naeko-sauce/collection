@@ -32,3 +32,4 @@ print("dwwaa".count("a"))
 # 填充字符
 nee = "derraa"
 print(nee.center(len(nee)+3,"$"))
+print(nee.startswith("d"), nee.endswith("d"))
