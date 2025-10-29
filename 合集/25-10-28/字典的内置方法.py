@@ -12,3 +12,17 @@ for i in d:
     print(i,d[i])
     g[i] = d[i]
 print(g)
+# 方式一删除字典内的数据
+del g["v"]
+print(g)
+# 方式2弹出
+re = g.pop("w")
+print(re)
+print(g)
+# 取出字典中所有的键
+print('================================')
+print(g.keys(),type(g.keys()))
+# 取出字典中所有的值
+print(g.values())
+# 取出字典中所有的键值对
+print(g.items())
