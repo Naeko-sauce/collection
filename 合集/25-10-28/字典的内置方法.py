@@ -26,3 +26,17 @@ print(g.keys(),type(g.keys()))
 print(g.values())
 # 取出字典中所有的键值对
 print(g.items())
+print("=========================================")
+m = {}
+name = input()
+
+m[name] = {
+    "a":1,
+    "b":name,
+    "c":{
+        "d":123,
+        "e":345,
+    }
+}
+print(m)
+print(m.get(name).get("c"))
