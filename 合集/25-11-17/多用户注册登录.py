@@ -7,7 +7,9 @@ m = {}
 while True:
     print(mu)
     fun_id = input("输入功能").strip()
+    print(fun_id.isdigit())
     if not fun_id.isdigit():
+
         print("布什数字")
         continue
     fun_id = int(fun_id)
