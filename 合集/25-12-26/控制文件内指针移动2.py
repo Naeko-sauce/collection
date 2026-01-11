@@ -9,7 +9,7 @@ with open("1.txe","r+",encoding="utf-8") as f:
     #2 按照文件末尾作为参照向后移动指定字节数
     f.seek(0, 2)
     # tell查看当前指针所在的字节位置
-    data = f.read(-1)
+    data = f.read(-1) 
     print(data)
     print(f.tell())
     f.write("11111")
